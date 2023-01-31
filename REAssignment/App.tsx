@@ -3,13 +3,14 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import RoundedButton from "./app/components/RoundedButton";
 import ListingCard from "./app/components/ListingCard";
+import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <ListingCard title="Red jacket for sale!" subTitle="$100" imageName="jacket.jpg" />
-    </SafeAreaView>
-    // <WelcomeScreen />
+    // <SafeAreaView style={styles.container}>
+    //   <ListingCard title="Red jacket for sale!" subTitle="$100" imageName="jacket.jpg" />
+    // </SafeAreaView>
+    <ListingDetailsScreen title="Red jacket for sale!" subTitle="$100" imageName="jacket.jpg" />
   );
 }
 

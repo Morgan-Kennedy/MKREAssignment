@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         marginLeft: 16,
         marginRight: 16,
         fontSize: 14,
-        fontWeight: "450"
+        fontWeight: "400"
     },
     subTitle: {
         marginTop: 8,
