@@ -10,7 +10,8 @@ export default function App() {
     // <SafeAreaView style={styles.container}>
     //   <ListingCard title="Red jacket for sale!" subTitle="$100" imageName="jacket.jpg" />
     // </SafeAreaView>
-    <ListingDetailsScreen title="Red jacket for sale!" subTitle="$100" imageName="jacket.jpg" />
+    // <ListingDetailsScreen title="Red jacket for sale!" subTitle="$100" imageName="jacket.jpg" />
+    <ViewImageScreen />
   );
 }
 

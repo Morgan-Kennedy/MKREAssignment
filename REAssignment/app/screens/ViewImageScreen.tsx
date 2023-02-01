@@ -1,5 +1,5 @@
-import { StyleSheet, SafeAreaView, ImageBackground, View, Platform } from 'react-native';
-import { useDimensions } from '@react-native-community/hooks';
+import { StyleSheet, SafeAreaView, ImageBackground, View, Platform, Pressable } from 'react-native';
+import { MaterialCommunityIcons } from "@expo/vector-icons"
 
 import colors from "../config/colors";
 
@@ -10,9 +10,13 @@ function ViewImageScreen() {
     return (
       <ImageBackground source={image} resizeMode="contain" style={styles.image}>
         <View style={styles.horizontalView}>
-            <View style={[styles.button, { backgroundColor: colors.primary }]}/>
-            <View style={[styles.button, { backgroundColor: colors.secondary }]}/>
-          </View>
+          <Pressable>
+            <MaterialCommunityIcons name="close" size={36} color={colors.white} />
+          </Pressable>
+          <Pressable>
+            <MaterialCommunityIcons name="trash-can-outline" size={36} color={colors.white} />
+          </Pressable>
+        </View>
       </ImageBackground>
     )
 }
