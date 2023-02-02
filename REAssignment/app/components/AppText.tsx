@@ -1,24 +1,34 @@
 import React from "react";
-import { Text, StyleSheet, Platform } from 'react-native'
+import { Text, StyleSheet, Platform, StyleProp } from 'react-native'
 
-function AppText({children} : { children: React.ReactNode }) {
-  return (
-    <Text style={styles.text}>{children}</Text>
-  )
+interface TextStyles {
+  children: React.ReactNode,
+  style?: TextStyles
+}
+
+function AppText({style, children} : {style?: TextStyles, children: React.ReactNode}) {
+  if (style != undefined) {
+    return (
+      <Text style={styles.text}>{children}</Text>
+    )
+  } else {
+    return (
+      <Text style={[styles.text, style]}>{children}</Text>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
     text: {
-        ...Platform.select({
-            ios: {
-              fontSize: 20,
-              fontFamily: "Avenir",
-            },
-            android: {
-              fontSize: 18,
-              fontFamily: "Roboto",
-            }
-          })
+      fontSize: 18,
+      ...Platform.select({
+          ios: {      
+            fontFamily: "Avenir",
+          },
+          android: {
+            fontFamily: "Roboto",
+          }
+      })
     }
 })
 

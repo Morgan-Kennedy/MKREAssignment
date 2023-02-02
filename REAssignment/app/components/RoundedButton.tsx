@@ -1,12 +1,12 @@
-import { Text, Pressable, ButtonProps, StyleSheet } from "react-native"
+import { Text, ButtonProps, StyleSheet, TouchableOpacity } from "react-native"
 
 import colors from "../config/colors"
 
 function RoundedButton(props: ButtonProps) {
   return (
-    <Pressable style={[styles.button, {backgroundColor: props.color}]} onPress={props.onPress}>
+    <TouchableOpacity style={[styles.button, {backgroundColor: props.color}]} onPress={props.onPress}>
         <Text style={styles.text}>{props.title}</Text>
-    </Pressable>
+    </TouchableOpacity>
   )
 }
 
@@ -14,14 +14,15 @@ const styles = StyleSheet.create({
     button: {
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: 40,
+        borderRadius: 25,
         backgroundColor: colors.primary,
         paddingVertical: 12,
         paddingHorizontal: 32
     },
     text: {
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: "bold",
+        textTransform: "uppercase",
         color: colors.white
     },
 })

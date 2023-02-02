@@ -1,11 +1,10 @@
-import { StyleSheet, SafeAreaView, ImageBackground, View, Platform, Pressable } from 'react-native';
+import { StyleSheet, ImageBackground, View, Pressable } from 'react-native';
 import { MaterialCommunityIcons } from "@expo/vector-icons"
 
 import colors from "../config/colors";
 
 function ViewImageScreen() {
     const image = require("../assets/chair.jpg")
-    const buttonHeight = 50
 
     return (
       <ImageBackground source={image} resizeMode="contain" style={styles.image}>
@@ -22,10 +21,6 @@ function ViewImageScreen() {
 }
 
 const styles = StyleSheet.create({
-    button: {
-      width: 50,
-      height: 50,
-    },
     image: {
       flex: 1,
       backgroundColor: colors.black,

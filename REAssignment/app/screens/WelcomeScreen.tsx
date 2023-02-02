@@ -15,10 +15,10 @@ function WelcomeScreen() {
         <Text style={styles.text}>Sell What You Don't Need</Text>
       </View>
       <View style={styles.buttonArea}>
-        <RoundedButton title="LOGIN" color={colors.primary} />
+        <RoundedButton title="Login" color={colors.primary} onPress={() => console.log("login Pressed")} />
       </View>
       <View style={[styles.buttonArea, {paddingBottom: 40}]}>
-        <RoundedButton title="REGISTER" color={colors.secondary} />
+        <RoundedButton title="Register" color={colors.secondary} onPress={() => console.log("register Pressed")} />
       </View>
     </ImageBackground>
   )
@@ -48,10 +48,13 @@ const styles = StyleSheet.create({
     flex: 1
   },
   text: {
-    marginTop: 8,
+    marginTop: 20,
     fontSize: 24,
     fontWeight: "600"
-  }
+  },
+  userInfoArea: {
+    marginTop: 32,
+},
 });
 
 export default WelcomeScreen
