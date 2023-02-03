@@ -6,6 +6,8 @@ import RoundedButton from "./app/components/RoundedButton";
 import ListingCard from "./app/components/ListingCard";
 import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 import MessagesScreen from "./app/screens/MessagesScreen";
+import MyAccountScreen from "./app/screens/MyAccountScreen";
+import ListingsScreen from "./app/screens/ListingsScreen";
 
 export default function App() {
   return (
@@ -13,7 +15,7 @@ export default function App() {
     //   <ListingCard title="Red jacket for sale!" subTitle="$100" image={require("./app/assets/jacket.jpg")} />
     // </SafeAreaView>
     // <ListingDetailsScreen title="Red jacket for sale!" subTitle="$100" image={require("./app/assets/jacket.jpg")} />
-    <MessagesScreen />
+    <ListingsScreen />
   );
 }
 
