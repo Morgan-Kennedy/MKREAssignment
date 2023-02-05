@@ -5,13 +5,8 @@ import { StackScreenProps } from "@react-navigation/stack"
 
 import UserInfo from "../components/UserInfo"
 import colors from "../config/colors"
-
-interface Listing {
-    id: number,
-    title: string,
-    subTitle: string,
-    image: ImageSourcePropType,
-}
+import { Listing } from "../data/ListingData"
+import { ScrollView } from "react-native-gesture-handler"
 
 type StackParamList = {
     ListingDetailsScreen: {item: Listing}
@@ -23,12 +18,12 @@ function ListingDetailsScreen({ route }: Props) {
   const listing = route.params.item
   return (
     <View style={styles.container}>
-        <Image source={listing.image} resizeMode="cover" style={styles.image} />
-        <Text style={styles.title}>{listing.title}</Text>
-        <Text style={styles.subTitle}>{listing.subTitle}</Text>
-        <View style={styles.userInfoArea}>
-            <UserInfo image={require("../assets/mosh.jpg")} title="Mosh Hamedani" subTitle="5 Listings" />
-        </View>
+        <Image source={{uri: listing.imageURL}} resizeMode="cover" style={styles.image} />
+        <ScrollView>
+        <Text style={styles.title}>{listing.address.street}</Text>
+        <Text style={styles.subTitle}>{listing.beds + " beds, " + listing.bathrooms + " bathrooms, " + listing.carSpaces + " car spaces"}</Text>
+        <Text style={styles.description}>{listing.description}</Text>
+        </ScrollView>
     </View>
   )
 }
@@ -37,6 +32,15 @@ const styles = StyleSheet.create({
     container: {
         alignItems: "flex-start",
         backgroundColor: colors.white,
+    },
+    description: {
+        marginTop: 12,
+        marginLeft: 16,
+        marginRight: 16,
+        marginBottom: 12,
+        fontSize: 17,
+        fontWeight: "normal",
+        color: colors.medium
     },
     image: {
         width: "100%",
