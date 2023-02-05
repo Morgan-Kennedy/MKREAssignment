@@ -1,20 +1,31 @@
+import { RouteProp, ParamListBase } from "@react-navigation/native"
 import { View, StyleSheet, Image, Text, ImageSourcePropType } from "react-native"
+import AppText from "../components/AppText"
+import { StackScreenProps } from "@react-navigation/stack"
 
 import UserInfo from "../components/UserInfo"
 import colors from "../config/colors"
 
-interface ListingDetailsScreenProps {
+interface Listing {
+    id: number,
     title: string,
     subTitle: string,
     image: ImageSourcePropType,
 }
 
-function ListingDetailsScreen(props: ListingDetailsScreenProps) {
+type StackParamList = {
+    ListingDetailsScreen: {item: Listing}
+}
+
+type Props = StackScreenProps<StackParamList, "ListingDetailsScreen">;
+
+function ListingDetailsScreen({ route }: Props) {
+  const listing = route.params.item
   return (
     <View style={styles.container}>
-        <Image source={props.image} resizeMode="cover" style={styles.image} />
-        <Text style={styles.title}>{props.title}</Text>
-        <Text style={styles.subTitle}>{props.subTitle}</Text>
+        <Image source={listing.image} resizeMode="cover" style={styles.image} />
+        <Text style={styles.title}>{listing.title}</Text>
+        <Text style={styles.subTitle}>{listing.subTitle}</Text>
         <View style={styles.userInfoArea}>
             <UserInfo image={require("../assets/mosh.jpg")} title="Mosh Hamedani" subTitle="5 Listings" />
         </View>

@@ -1,5 +1,6 @@
 import { FlatList, StyleSheet, View, ImageSourcePropType } from "react-native"
 import React, { useState } from "react"
+import { NavigationProp } from "@react-navigation/native";
 
 import colors from "../config/colors"
 import Screen from "../components/Screen"
@@ -27,24 +28,26 @@ const initialListings: Listing[] = [
     },
 ]
 
-function ListingsScreen() {
+type StackParamList = {
+    ListingDetailsScreen: {item: Listing}
+};
+
+function ListingsScreen({navigation}:{navigation: NavigationProp<StackParamList>}) {
   const [listings, setListings] = useState(initialListings)
   const [refreshing, setRefreshing] = useState(false)
 
   return (
-    <View style={styles.background}>
-        <Screen>
-            <FlatList 
-                data={listings}
-                keyExtractor={listing => listing.id.toString()} 
-                renderItem={({ item }) =>
-                    <ListingCard title={item.title} subTitle={item.subTitle} image={item.image} />
-                }
-                refreshing={refreshing}
-                onRefresh={() => setListings(initialListings)} 
-            />
-        </Screen>
-    </View>
+    <Screen styles={styles.background}>
+        <FlatList 
+            data={listings}
+            keyExtractor={listing => listing.id.toString()} 
+            renderItem={({ item }) =>
+                <ListingCard title={item.title} subTitle={item.subTitle} image={item.image} onPress={() => navigation.navigate("ListingDetailsScreen", {item})} />
+            }
+            refreshing={refreshing}
+            onRefresh={() => setListings(initialListings)} 
+        />
+    </Screen>
   )
 }
 

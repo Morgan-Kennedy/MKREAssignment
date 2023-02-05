@@ -1,4 +1,5 @@
-import { Image, StyleSheet, View, Text, ImageSourcePropType } from "react-native"
+import { Image, StyleSheet, View, Text, ImageSourcePropType, GestureResponderEvent } from "react-native"
+import { TouchableWithoutFeedback } from "react-native-gesture-handler"
 
 import colors from "../config/colors"
 import AppText from "./AppText"
@@ -7,17 +8,20 @@ interface ListingCardProps {
     title: string,
     subTitle: string,
     image: ImageSourcePropType,
+    onPress?: () => void
 }
 
-function ListingCard({title, subTitle, image}: ListingCardProps) {
+function ListingCard({title, subTitle, image, onPress}: ListingCardProps) {
   return (
-    <View style={styles.container}>
-        <View style={styles.card}>
-            <Image source={image} resizeMode="cover" style={styles.image} />
-            <Text style={styles.title}>{title}</Text>
-            <Text style={styles.subTitle}>{subTitle}</Text>
+    <TouchableWithoutFeedback onPress={onPress}>
+        <View style={styles.container}>
+            <View style={styles.card}>
+                <Image source={image} resizeMode="cover" style={styles.image} />
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.subTitle}>{subTitle}</Text>
+            </View>
         </View>
-    </View>
+    </TouchableWithoutFeedback>
   )
 }
 
