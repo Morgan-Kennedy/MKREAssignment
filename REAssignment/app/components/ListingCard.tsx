@@ -7,7 +7,7 @@ import AppText from "./AppText"
 interface ListingCardProps {
     title: string,
     subTitle: string,
-    image: ImageSourcePropType,
+    image: string,
     onPress?: () => void
 }
 
@@ -16,7 +16,7 @@ function ListingCard({title, subTitle, image, onPress}: ListingCardProps) {
     <TouchableWithoutFeedback onPress={onPress}>
         <View style={styles.container}>
             <View style={styles.card}>
-                <Image source={image} resizeMode="cover" style={styles.image} />
+                <Image source={{uri: image}} resizeMode="cover" style={styles.image} />
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.subTitle}>{subTitle}</Text>
             </View>
